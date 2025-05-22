@@ -1,0 +1,16 @@
+function get_user_access($username) {
+    // بارگذاری فایل JSON
+    $access_file = 'data/access.json';
+    $access_data = json_decode(file_get_contents($access_file), true);
+    
+    // بررسی اینکه آیا دسترسی برای این کاربر وجود دارد
+    if (isset($access_data[$username])) {
+        return $access_data[$username];
+    } else {
+        return [];
+    }
+}
+
+// استفاده از تابع برای بررسی دسترسی
+$user_access = get_user_access('user1'); // جایگزین کنید با نام کاربری واقعی
+print_r($user_access); // نمایش دسترسی‌ها
